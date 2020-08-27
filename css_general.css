@@ -1,0 +1,514 @@
+/*LABELSTYLES*/
+
+.labelstyle {
+    color: rgb(220,220,220);
+    font-size:14px;
+    font-weight: bold;
+    background-color: none;
+    border-color: none;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0px;
+    font-family: Yu Gothic, sans-serif;
+}
+
+.constituencyLabel {
+  text-align: center;
+  background-color: rgba(255,255,255,.9);
+  font-weight: bold;
+  border-width: 2px;
+}
+
+.cityLablesStyle {
+	color: grey;
+    font-size: 12px;
+    font-weight: 700;
+    background-color: rgba(255,255,255,.2);;
+    border-color: none;
+    border: none;
+    box-shadow: none;
+    margin: 0px;
+    font-family: Yu Gothic, sans-serif;
+}
+/*----------------*/
+
+
+
+
+#line {
+	height: 2px;
+}
+
+
+/*LEAFLET-SIDEBAR ALTERATIONS*/
+
+/*.leaflet-sidebar {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2000;
+  height: 540px; }*/
+  .leaflet-sidebar.collapsed {
+    width: 60px; }
+
+.leaflet-sidebar-header {
+  margin-top: 0;
+  height: 60px;
+  padding: 0px;
+
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgba(241,114,64,1); }
+
+  .leaflet-sidebar.collapsed {
+    width: 60px; }
+  .leaflet-sidebar.collapsed {
+    width: 60px; }
+
+.leaflet-sidebar-tabs {
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: #fff; }
+  .leaflet-sidebar-tabs, .leaflet-sidebar-tabs > ul {
+    position: absolute;
+    width: 60px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+    .leaflet-sidebar-tabs > li, .leaflet-sidebar-tabs > ul > li {
+      width: 100%;
+      height:60px;
+      color: rgb(0,0,0);
+      font-size: 12pt;
+      overflow: hidden;
+      transition: all 80ms; 
+ 	  animation: fadein 0.5s;}
+      .leaflet-sidebar-tabs > li:hover, .leaflet-sidebar-tabs > ul > li:hover {
+        color: rgb(0,0,0);
+    	opacity: 0.9;
+    	font-size: 14pt}
+      .leaflet-sidebar-tabs > li.active, .leaflet-sidebar-tabs > ul > li.active > a{
+        color: #fff;
+/*       background-color: rgb(255,255,255) */
+        opacity: 1;
+        font-size: 14pt
+/*    	border: 1px solid rgb(255,255,255);} */
+		}
+      .leaflet-sidebar-tabs > li.disabled, .leaflet-sidebar-tabs > ul > li.disabled {
+      	opacity: 0.9;}
+        .leaflet-sidebar-tabs > li.disabled:hover, .leaflet-sidebar-tabs > ul > li.disabled:hover {
+          background: transparent; }
+        .leaflet-sidebar-tabs > li.disabled > a, .leaflet-sidebar-tabs > ul > li.disabled > a {
+          cursor: default; }
+      .leaflet-sidebar-tabs > li > a, .leaflet-sidebar-tabs > ul > li > a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        box-sizing: border-box;
+        color: inherit;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer; }
+        	.leaflet-sidebar-tabs > li > a > b, .leaflet-sidebar-tabs > ul > li > a >b {
+        		  position: absolute;
+				  top: 50%;
+				  left: 50%;
+				  transform: translate(-50%, -50%);
+        	}
+  .leaflet-sidebar-tabs > ul + ul {
+    bottom: 0; }
+
+  .leaflet-sidebar-right .leaflet-sidebar-content {
+    left: 0;
+    right: 60px; }
+
+
+.leaflet-sidebar-content {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+  .leaflet-sidebar-right .leaflet-sidebar-content {
+    left: 0;
+    right: 60px; }
+  .leaflet-sidebar.collapsed > .leaflet-sidebar-content {
+    overflow-y: hidden; }
+
+
+/*  @media (min-width: 600px) and (max-width: 991px) {
+    .leaflet-sidebar-header {
+      width: 245px; } }*/
+  @media (min-width: 600px){
+    .leaflet-sidebar-header {
+      width: 330px; } }
+
+
+/*SIDEBAR PANEL SETTINGS*/
+
+.polInformation, .countyInformation, .constituencyInformation, .attributionInformation {
+	padding-left: 40px;
+	padding-right: 20px;
+	height: 440px;
+}
+
+#sidebarTitleText > a{
+	color: white;
+	font-family: Yu Gothic, sans-serif;
+	font-weight: bold;
+}
+
+
+#sidebarTitleColor {
+	margin: 0px 70px 0px 0px;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+#sidebarTitle {
+  overflow: auto;
+  display : flex;
+  align-items : center;
+  box-sizing: border-box;
+  height: 60px;
+  position: absolute;
+  left: 40px;
+
+  width: calc(100% - 50px);
+}
+
+#sidebarTitleText {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.leaflet-sidebar-tabs > ul > li > a > div {
+  overflow: hidden;
+  display : flex;
+  align-items : center;
+  box-sizing: border-box;
+  height: 60px;
+  width: 100%;
+  position: absolute;
+}
+b.tab_text {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.5;
+  width: 100%;
+  font-size: 12px;
+  overflow-wrap: break-word;
+}
+
+
+/*PARTY COLOURS*/
+div#SPD > .leaflet-sidebar-header, .SPD , #SPDLine {
+	background-color: #DF0B25;
+}
+
+div#CDU > .leaflet-sidebar-header, .CDU , #CDULine {
+	background-color: rgba(50,50,50,1);
+	color: rgb(200,200,200);
+}
+div#CSU > .leaflet-sidebar-header, .CSU , #CSULine {
+	background-color: rgba(50,50,50,1);
+	color: rgb(200,200,200);
+}
+div#FDP > .leaflet-sidebar-header, .FDP , #FDPLine {
+	background-color: #FEEB34;
+}
+div#DIEGRUENEN > .leaflet-sidebar-header, .DIEGRUENEN , #DIEGRUENENLine {
+	background-color: #4A932B;
+}
+div#DIELINKE > .leaflet-sidebar-header, .DIELINKE , #DIELINKELine {
+	background-color: #BC3475;
+}
+div#AfD > .leaflet-sidebar-header, .AfD , #AfDLine {
+	background-color: #1A9FDD;
+}
+div#Parteilos > .leaflet-sidebar-header, .Parteilos , #ParteilosLine {
+	background-color: #f0f0f0;
+}
+
+
+
+
+/*SPECIAL CHANGES FOR VISIBILLITY*/
+#sidebarTitleColor.Parteilos > #sidebarTitle > #sidebarTitleText > a {
+	color: black;
+}
+.leaflet-sidebar-tabs > ul > li.active > .Parteilos, .leaflet-sidebar-tabs > ul > li.active > a > #Parteilos, #sidebarTitleColor.Parteilos > a, li.active >a > .Parteilos > .tab_text {
+  color: black;
+}
+.leaflet-sidebar-tabs> ul > li.active > a > .CDU > b.tab_text, .leaflet-sidebar-tabs > ul > li.active > a > .CSU > b.tab_text{
+  color: white;
+}
+
+
+
+#sidebarTitleColor.FDP> #sidebarTitle > #sidebarTitleText > a  {
+	color: black;
+}
+
+.attributionTab {
+	color: #F17240;
+  height: 100%;
+  width: 100%;
+  line-height: 60px;
+  align-items: center;
+}
+
+li.active > a > .attributionTab {
+	background-color: #F17240;
+  color: white;
+  transform: scale(1.1);
+}
+.fas, .fa {
+  line-height: 60px;
+  width: 100%;
+}
+
+/*SPECIAL SETTINGS FOR COUNTY AND CONSTITUENCY TABS*/
+.leaflet-sidebar-tabs > ul > li > a > .countyTab {
+	background-color: #F17240;
+	opacity: 1;
+}
+.constituencyTab, .countyTab {
+	background-color: #F17240;
+	font-size: 10px;
+	opacity: 1;
+	animation: none;
+}
+.countyTab > b.tab_text {
+	font-size: 16px;
+}
+
+
+/*ANIMATION SETTINGS*/
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+@keyframes noBlur {
+	from {-webkit-filter: blur(8px); filter: blur(8px);}
+	to {-webkit-filter: none; filter:none}
+}
+
+
+p {
+	font-family: Yu Gothic, sans-serif;
+}
+
+
+
+
+/*GENERAL ELEMENTS*/
+
+#everyting {
+  width: 100%;
+  height: 100%;
+}
+
+#description {
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 60%;
+  text-align: center;
+}
+
+#backdrop {
+	width:100%;
+	height: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  z-index: 5;
+}
+
+.blocking {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.01);
+  z-index: 1000;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Yu Gothic, sans-serif;
+  }
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#map {
+  width: 100%;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  animation: fadein 3s;
+  height: 100%;
+  position: absolute;
+  top:0;
+}
+
+
+a:link {
+text-decoration: none;
+}
+a:visited {
+
+}
+
+a:hover {
+  text-decoration: underline;
+  font-style: bold;
+}
+
+a.link:hover {
+  transform: scale(1.1);
+}
+
+hr {
+  border: none;
+  height: 2px;
+}
+
+
+
+/*HEADER*/
+#header {
+  height: 50px;
+  background-color: rgba(241,114,64,1);
+  z-index: 6;
+  display : flex;
+  align-items : center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+
+}
+#slogan {
+  color: white;
+  line-height: 1.5;
+  width: 100%;
+  font-size: 20px
+}
+#headline {
+    padding-left: 50px;
+}
+
+#language {
+  right: 50px;
+  line-height: 50px;
+  height: 100%;
+  z-index:11;
+  position: absolute;
+  color: white;
+  top: 0px;
+}
+#language > a {
+    color: white;
+
+}
+
+
+/*FONT AWESOME SYMBOLS*/
+#gitHub, #aw {
+	color: rgba(241,114,64,1);
+}
+#gitHub:hover, #aw:hover , #twitter:hover{
+	transform: scale(1.1)
+}
+#twitter {
+  color: rgba(241,114,64,1);
+  position: absolute;
+  left: 80px;
+}
+
+
+#aw {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  height: 50px;
+  width: 50px;
+  z-index: 2000;
+}
+
+#logo {
+  position: absolute;
+  z-index: 210;
+  background-color: white
+  height:100%;
+  width: 100%;
+}
+
+#symbolsBar {
+	position: absolute;
+	bottom:20px;
+	left: 40px;
+}
+#ask {
+  position: absolute;
+  bottom:20px;
+  left: 40px;
+}
+
+i#AfD {
+  color:#1A9FDD;
+}
+i#Parteilos {
+  color: #f0f0f0;
+}
+i#DIELINKE {
+  color:#BC3475;
+}
+i#DIEGRUENEN {
+  color:#4A932B;
+}
+i#FDP {
+  color:#FEEB34;
+}
+i#CDU {
+  color:black;
+}
+i#CSU {
+  color:black;
+}
+i#SPD {
+  color:#DF0B25;
+}
+i:hover {
+  transform: scale(1.1);
+}
