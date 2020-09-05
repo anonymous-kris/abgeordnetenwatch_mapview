@@ -1,4 +1,8 @@
-//FUNCTION THAT THE SCRIPT CALLS UPON
+//FUNCTION THAT THE SCRIPT CALLS UPON FOR ABGEORDNETENWATCH.DE | KARTENANSICHT
+//BY KRISTIAN KAESINGER
+
+
+//TABLE OF CONTENTS
 // 1. Global Variables
 // 2. General Functions
 // 3. Feature Event Listeners
@@ -165,12 +169,12 @@ function createBlocking() {
 //CONSTITUENCY
 //click on constituency
 var clickConstituency = function(feature) { //takes information on target feature
-	abortAJAX(); //abort previous ajax requests, to prevent loading of previously clicked constituencies 
+	abortAJAX(); //abort previous ajax requests, to prevent loading of no longer relevant data
 	constituencies.resetStyle(); //reset old selection styles
-	var currentLayer = feature.target;
 	sidebarClear(previousPolitician); //clear sidebar of previous politicians
-	constituencySidebar(currentLayer); //create sidebar for the constituency and its politicians
 
+	var currentLayer = feature.target;
+	constituencySidebar(currentLayer); //create sidebar for the constituency and its politicians
 	highlightConstituency(currentLayer); //highlight the clicked constituency
 }
 
@@ -203,11 +207,9 @@ function resetConstituencyHover(feature) {
 //COUNTIES
 //upon click, zoom on layer and hide it. store layer information in "previousCounty". next click will show previously hidden layer
 function focusCounty(feature) {
-
 	if (previousCounty !== null) {
 		abortAJAX();
 		showLayer(previousCounty);
-		counties.resetStyle();
 		constituencies.resetStyle();
 	}
 	else {sidebar.addTo(map)} //show sidebar again
@@ -216,10 +218,11 @@ function focusCounty(feature) {
 	sidebarClear(previousCountyList);
 	sidebarClear(previousConstituencyList)
 
+	counties.resetStyle();
+
 	var currentLayer = feature.target;
 	var currentName = currentLayer.feature.properties.GEN;
 	
-
 	countySidebar(currentLayer) //create county sidebar
 
 	hideLayer(currentName); //hide layer to show constituencies underneath
@@ -253,7 +256,6 @@ function resetHighlightHover(feature) {
 
 //on rightclick anywhere, reset map to starting position
 function onRightClick () {
-//	if(levelCounter !== 0) {  //Since free zoom with mousewheel is allowed, right click has to function alyways as a reset
 		counties.bringToFront();
 		counties.resetStyle();
 		constituencies.resetStyle();
@@ -267,8 +269,6 @@ function onRightClick () {
 		zoomFit(state,50);
 		previousCounty = null
 		levelCounter = 0; // reset logic counter back to 1
-//	}
-//	else{}
 }
 
 
@@ -305,19 +305,23 @@ var attributionSidebar = {
 	id: 'attribution',       
 	tab: "<div class= 'attributionTab' class=''><i class='fas fa-info-circle fa-2x'></i></div>",
 	pane: "<div class='attributionInformation'>" +
-			"<p>Die Daten zu allen Abgeordneten werden über <a href='www.abgeordnetenwatch.de'>abgeordnetenwatch.de's</a> web API abgerufen. </p>"  +
-			"<p>Die Geodaten wurden vom <a href='http://www.bkg.bund.de'>© GeoBasis-DE / BKG (2020) </a> und dem <a href='https://www.bundeswahlleiter.de/bundestagswahlen/2017/wahlkreiseinteilung/downloads.html'> © Der Bundeswahlleiter, Statistisches Bundesamt, Wiesbaden 2016 </a> bereitgestellt. </p>"+
+			"<p>Diese Karte ist im Zusammenhang mit der Masterarbeit von Kristian Käsinger erstellt worden. Bei Fragen und Anregungen melden Sie sich gerne per <a href='mailto:kristian.kaesinger@gmail.com'>Email</a> bei mir. </p>" +
+			"<p>Version 0.1.0</p>" +
+			"<p>Dies ist eine Legacy Version, welche nicht weiterentwickelt wird.<br>Die aktuelle Version finden Sie unter <a href='http://maps-and-such.space'>www.maps-and-such.space</a>.</p>" +
 			"<hr id ='line'>" +
-			"<p>Dies ist ein Projekt welches im Zusammenhang mit der Masterarbeit von Kristian Käsinger erstellt wurde. Bei Fragen und Anregungen melden Sie sich gerne per <a href='mailto:kristian.kaesinger@gmail.com'>Email</a> bei mir. </p>" +
-			"<p>Version 0.9.9</p>" +
-//			"<p>Diese Version ist eine Legacy Version, die nicht weiter entwickelt wird, damit sie mit der Dokumentation der dazugehörigen Masterarbeit übereinstimmt.<br>Eine neue Version können Sie später hier finden:<br>'_________________'</p>" +
-			"<div id='symbolsBar'>" +
-				"<a href='https://github.com/anonymous-kris/abgeordnetenwatch_webmap' target='_blank'><i id='gitHub' class='fab fa-github fa-5x'></i></a>"+
-				"<a href='https://twitter.com/kristiankaese' target='_blank'><i id='twitter' class='fab fa-twitter fa-5x'></i></a>"+
-				
+			"<p>Die Daten zu allen Abgeordneten werden über <a href='www.abgeordnetenwatch.de'>abgeordnetenwatch.de's</a> web API abgerufen. </p>"  +
+			"<p>Die Geodaten wurden vom <a href='http://www.bkg.bund.de'>© GeoBasis-DE / BKG (2020) </a> und dem" + 
+			"<a href='https://www.bundeswahlleiter.de/bundestagswahlen/2017/wahlkreiseinteilung/downloads.html'> © Bundeswahlleiter</a> bereitgestellt.<br>"+
+			"<i style='color:grey; font-size: 9px;'>(Statistisches Bundesamt, Wiesbaden 2016,<br>" +
+			"Wahlkreiskarte für die Wahl zum 19. Deutschen Bundestag Grundlage der Geoinformationen © Geobasis-DE / BKG (2016))</i></p>"+
 			"</div>" +
-
-		"</div>",
+		"<div id='symbolsBar'>" +
+			"<a href='https://github.com/anonymous-kris/abgeordnetenwatch_webmap' target='_blank'><i id='gitHub' class='fab fa-github fa-5x'></i></a>"+
+			"<a href='https://twitter.com/kristiankaese' target='_blank'><i id='twitter' class='fab fa-twitter fa-5x'></i></a>"+
+			"<a href='https://abgeordnetenwatch.de' target='_blank'><img id='logo' src='images/logo_RGB/Bildmarke/aw_logo_2017_bildmarke_klein.png'></a>" +
+			
+		"</div>"
+		,
 	title: '<div id="sidebarTitleColor"><div id="sidebarTitle"><div id=sidebarTitleText>Datenquellen</div></div></div>',
 	position: 'bottom'
 }
@@ -337,14 +341,12 @@ var politicianSidebar = function(feature) {
 				/* //committee memberships - currently not used due to issues with the AJAX requests
 				$.getJSON("https://www.abgeordnetenwatch.de/api/v2/committee-memberships?candidacy_mandate[entity.id]=" + value.id, function(data) {
 					committeeData = data.data
-					console.log(committeeData)
+					console.log(committeeData) 
 				*/
 
 				//get information from politician entity
 				$.getJSON("https://www.abgeordnetenwatch.de/api/v2/politicians/" + value.politician.id, function(data) {
 					politicianData = data.data;
-
-
 
 		 		//create panel for each politician
 				panelContent = {
@@ -368,14 +370,13 @@ var politicianSidebar = function(feature) {
 						title: '<div id="sidebarTitleColor" class="'+ replaceUmlaute(party_nospace(politicianData.party.label)) +'"><div id="sidebarTitle"><div id=sidebarTitleText><a class="link" href="'+ politicianData.abgeordnetenwatch_url +'" target="_blank">' +  value.politician.label + "</a></div></div></div>",
 						position: 'top'
 						}
-			sidebar.addPanel(panelContent);
-     
+			sidebar.addPanel(panelContent);    
      		//save the id of the added tab in the list
 			previousPolitician.push(panelContent.id) 
 			})})
 
-			})
-		}
+	})
+}
 
  
 //Create sidebar with county information after click as well as politicians that belong to no constituency
@@ -383,18 +384,10 @@ var countySidebar = function(feature) {
 	//gets information on the clicked feature
 	var countyContent = feature.feature.properties
 
-	//remove old panels, only exist if levelCounter is 1
-	if(levelCounter == 1) {
-	sidebarClear(previousConstituencyList)
-	sidebarClear(previousCountyList)
-	sidebarClear(previousPolitician)
-	}
-
 	//empty the list of politicians in the county that have no constituency
 	noConstiuencyList = []
 	//array used to create for pane content
 	var listString = []
-
 
 	$.each(noConstituencyPolitician, function(key,value) {
 		//ignore null values
@@ -485,17 +478,10 @@ var countyNoConstituency = function(list) {
 //crate sidebar for the clicked constituency
 var constituencySidebar = function(feature) {
 
-
 	//create blocking element until the tab has been created to prevent user from breaking the website
 	createBlocking();
 
-	//gets data from constituency
 	var constituencyContent = feature.feature.properties
-	sidebarClear(previousConstituencyList)
-	//resets panelContent
-	panelContent = null;
-
-
 	sidebarClear(previousConstituencyList)
 
 		//get data on MPs from constituency
@@ -510,7 +496,6 @@ var constituencySidebar = function(feature) {
 					listString.push("<li>" + data1[i].politician.label +" (" + data1[i].fraction_membership[0].label + ")</li>");
 					}
 				listString = listString.join("");
-
 
 			panelContent = {
 				id: 'constituencySidebarId',
@@ -529,17 +514,14 @@ var constituencySidebar = function(feature) {
 			sidebar.open('constituencySidebarId')
 			fitty('#sidebarTitleText', {minSize: 12, maxSize: 16, multiLine: true}) //fits text of constituency into sidebar
 
-
-			//safe name of recent constituency
+			//store name of recent constituency
 			previousConstituencyList.push(panelContent.id)
 			$('.blocking').remove();
 
 			//crate the politician tabs that belong to the constituency
 			politicianSidebar(feature);
-
 	})
-
-	}
+}
 
 
 //-------------------------------------
