@@ -307,7 +307,6 @@ var attributionSidebar = {
 	pane: "<div class='attributionInformation'>" +
 			"<p>Diese Karte ist im Zusammenhang mit der Masterarbeit von Kristian Käsinger erstellt worden. Bei Fragen und Anregungen melden Sie sich gerne per <a href='mailto:kristian.kaesinger@gmail.com'>Email</a> bei mir. </p>" +
 			"<p>Version 0.1.0</p>" +
-			"<p>Dies ist eine Legacy Version, welche nicht weiterentwickelt wird.<br>Die aktuelle Version finden Sie unter <a href='http://maps-and-such.space'>www.maps-and-such.space</a>.</p>" +
 			"<hr id ='line'>" +
 			"<p>Die Daten zu allen Abgeordneten werden über <a href='www.abgeordnetenwatch.de'>abgeordnetenwatch.de's</a> web API abgerufen. </p>"  +
 			"<p>Die Geodaten wurden vom <a href='http://www.bkg.bund.de'>© GeoBasis-DE / BKG (2020) </a> und dem" + 
